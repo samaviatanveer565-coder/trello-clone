@@ -70,7 +70,7 @@ export default function Footer() {
 
     return (
         <footer className="w-full bg-[#192B4D] text-white">
-            <div className="mx-auto max-w-[980px] px-4">
+            <div className="trello-container">
 
                 {/* TOP FOOTER */}
                 <div

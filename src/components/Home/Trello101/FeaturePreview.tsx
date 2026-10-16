@@ -10,23 +10,26 @@ export default function FeaturePreview({
 }: FeaturePreviewProps) {
     return (
         <div className="w-full">
+
+            <div className="w-[90%]"> 
             {/* Three dots above illustration */}
-            <div className="mb-[15px] flex justify-end gap-[7px]">
+            <div className="carousel-controls">
                 {[0, 1, 2].map((dot) => (
                     <span
                         key={dot}
-                        className="h-[7px] w-[7px] rounded-full bg-[#091E42]"
+                        className="carousel-dot bg-[#091E42]"
                     />
                 ))}
             </div>
 
             {/* Original Trello illustration */}
-            <div className="flex aspect-[625/420] w-[90%] items-center justify-center overflow-hidden rounded-[9px] bg-[#F1F2F4]">
+            <div className="flex aspect-[625/420] w-full items-center justify-center overflow-hidden rounded-[9px] bg-[#F1F2F4]">
                 <img
                     src={image}
                     alt={title}
                     className="h-full w-full object-contain"
                 />
+            </div>
             </div>
         </div>
     );

@@ -10,7 +10,7 @@ export default function TrustedBrands() {
                 <img
                     src="/images/testimonials/trusted-brands.svg"
                     alt="Visa, Coinbase, John Deere, Zoom, Grand Hyatt and Fender"
-                    className="block h-auto w-full max-w-[960px]"
+                    className="block h-auto w-[900px]"
                 />
             </div>
         </div>

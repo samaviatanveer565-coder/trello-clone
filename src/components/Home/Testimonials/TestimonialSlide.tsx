@@ -18,7 +18,7 @@ export default function TestimonialSlide({
   return (
     <article
       className="
-        grid min-h-[405px] w-full grid-cols-1
+        grid min-h-[490px] w-full max-w-[1160px] grid-cols-1
         overflow-hidden rounded-[8px]
         border border-[#DFE1E6]
         bg-white shadow-md

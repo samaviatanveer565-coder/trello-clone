@@ -1,17 +1,17 @@
 import { ChevronDown } from "lucide-react";
 export default function Header() {
     return (
-        <header className="h-[52px] w-full bg-white">
-            <div className="mx-auto flex h-full w-full max-w-[1100px] items-center justify-between">
+        <header className="h-[60px] w-full bg-white">
+            <div className="mx-auto flex h-full w-full max-w-[1350px] items-center justify-between">
 
                 {/* Logo + Navigation */}
-                <div className="flex h-full items-center gap-[28px]">
+                <div className="flex h-full items-center gap-[29px]">
 
-                    <a href="/" className="flex shrink-0 items-center">
+                    <a href="/" className="flex shrink-0 items-center ">
                         <img
                             src="/images/trello-logo.svg"
                             alt="Atlassian Trello"
-                            className="w-[100px] h-auto"
+                            className="w-[110px] h-auto"
                         />
                     </a>
 
@@ -52,7 +52,7 @@ export default function Header() {
 
                     <a
                         href="#signup"
-                        className="flex h-full items-center justify-center bg-trello-blue px-[22px] text-[16px] text-white font-bold  transition-colors hover:bg-[#0052CC]"
+                        className="flex h-full items-center justify-center bg-trello-blue px-[20px] text-[16px] text-white font-bold  transition-colors hover:bg-[#0052CC]"
                     >
                         Get Trello for free
                     </a>

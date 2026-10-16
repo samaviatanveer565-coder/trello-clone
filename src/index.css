@@ -71,4 +71,31 @@ video {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+/* Shared carousel controls alignment */
+.carousel-controls {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+/* Pagination dots group */
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* Individual pagination dot */
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
 }

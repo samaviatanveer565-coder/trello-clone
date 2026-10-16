@@ -63,106 +63,110 @@ export default function TestimonialsSection() {
     return (
         <section
             id="testimonials"
-            className="w-full bg-white px-4 pt-[45px] pb-[75px]"
+            className="w-full  bg-white px-4 pt-[40px] pb-[75px]"
         >
-            <div className="mx-auto max-w-[1050px]">
+            <div className="trello-container ">
 
-                {/* Carousel navigation */}
-                <div className="mb-[20px] flex items-center justify-end gap-[20px]">
+                {/* Navigation aur testimonial card ka common wrapper */}
+                <div className="w-full max-w-[1100px]">
 
-                    {/* Pagination dots */}
-                    <div
-                        className="flex items-center gap-[7px]"
-                        role="group"
-                        aria-label="Choose testimonial"
-                    >
-                        {testimonials.map((testimonial, index) => (
-                            <button
-                                key={testimonial.id}
-                                type="button"
-                                onClick={() => setActiveIndex(index)}
-                                aria-label={`Show testimonial ${index + 1}`}
-                                aria-current={
-                                    activeIndex === index ? "true" : undefined
-                                }
-                                className={`
+                    {/* Carousel navigation */}
+                    <div className="mb-[20px] flex w-full items-center justify-end gap-[12px]">
+
+                        {/* Pagination dots */}
+                        <div
+                            className="flex items-center gap-[7px]"
+                            role="group"
+                            aria-label="Choose testimonial"
+                        >
+                            {testimonials.map((testimonial, index) => (
+                                <button
+                                    key={testimonial.id}
+                                    type="button"
+                                    onClick={() => setActiveIndex(index)}
+                                    aria-label={`Show testimonial ${index + 1}`}
+                                    aria-current={
+                                        activeIndex === index ? "true" : undefined
+                                    }
+                                    className={`
                   h-[8px] w-[8px] rounded-full
                   focus-visible:outline-2
                   focus-visible:outline-offset-4
                   focus-visible:outline-[#0065FF]
                   ${activeIndex === index
-                                        ? "bg-[#091E42]"
-                                        : "bg-[#A5ADBA] hover:bg-[#42526E]"
-                                    }
+                                            ? "bg-[#091E42]"
+                                            : "bg-[#A5ADBA] hover:bg-[#42526E]"
+                                        }
                 `}
-                            />
-                        ))}
+                                />
+                            ))}
+                        </div>
+
+                        {/* Previous button */}
+                        <button
+                            type="button"
+                            onClick={previousSlide}
+                            aria-label="Previous testimonial"
+                            className="
+              flex h-[30px] w-[30px]
+              items-center justify-center
+              rounded-full bg-[#F1F2F4]
+              text-[#626F86] hover:bg-[#DFE1E6]
+              focus-visible:outline-2
+              focus-visible:outline-[#0065FF]
+            "
+                        >
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="m15 18-6-6 6-6" />
+                            </svg>
+                        </button>
+
+                        {/* Next button */}
+                        <button
+                            type="button"
+                            onClick={nextSlide}
+                            aria-label="Next testimonial"
+                            className="
+              flex h-[30px] w-[30px]
+              items-center justify-center
+              rounded-full bg-[#F1F2F4]
+              text-[#626F86] hover:bg-[#DFE1E6]
+              focus-visible:outline-2
+              focus-visible:outline-[#0065FF]
+            "
+                        >
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="m9 18 6-6-6-6" />
+                            </svg>
+                        </button>
                     </div>
 
-                    {/* Previous button */}
-                    <button
-                        type="button"
-                        onClick={previousSlide}
-                        aria-label="Previous testimonial"
-                        className="
-              flex h-[30px] w-[30px]
-              items-center justify-center
-              rounded-full bg-[#F1F2F4]
-              text-[#626F86] hover:bg-[#DFE1E6]
-              focus-visible:outline-2
-              focus-visible:outline-[#0065FF]
-            "
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            aria-hidden="true"
-                        >
-                            <path d="m15 18-6-6 6-6" />
-                        </svg>
-                    </button>
-
-                    {/* Next button */}
-                    <button
-                        type="button"
-                        onClick={nextSlide}
-                        aria-label="Next testimonial"
-                        className="
-              flex h-[30px] w-[30px]
-              items-center justify-center
-              rounded-full bg-[#F1F2F4]
-              text-[#626F86] hover:bg-[#DFE1E6]
-              focus-visible:outline-2
-              focus-visible:outline-[#0065FF]
-            "
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            aria-hidden="true"
-                        >
-                            <path d="m9 18 6-6-6-6" />
-                        </svg>
-                    </button>
-                </div>
-
-                {/* Only selected testimonial changes */}
-                <div aria-live="polite" aria-atomic="true">
-                    <TestimonialSlide
-                        testimonial={activeTestimonial}
-                    />
+                    {/* Only selected testimonial changes */}
+                    <div aria-live="polite" aria-atomic="true">
+                        <TestimonialSlide
+                            testimonial={activeTestimonial}
+                        />
+                    </div>
                 </div>
 
                 {/* One SVG contains all six trusted logos */}

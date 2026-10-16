@@ -21,6 +21,7 @@ export default function Hero() {
           max-md:grid-cols-1
           max-md:gap-8
           max-md:py-16
+           relative left-[20px]
         "
             >
                 {/* LEFT SIDE: Heading and signup */}
