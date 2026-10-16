@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* Trello-inspired global design tokens */
+:root {
+  --trello-blue: #0065ff;
+  --trello-blue-hover: #0052cc;
+  --trello-navy: #091e42;
+  --trello-hero-bg: #f4f5f7;
+  --trello-white: #ffffff;
+  --trello-border: #dfe1e6;
+
+  --font-body: "Nunito Sans", Arial, sans-serif;
+  --font-heading: "Nunito Sans", Arial, sans-serif;
+
+  --container-width: 960px;
+  --navbar-height: 52px;
+
+  font-family: var(--font-body);
+  color: var(--trello-navy);
+  background: var(--trello-white);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tailwind v4 theme tokens */
+@theme inline {
+  --color-trello-blue: var(--trello-blue);
+  --color-trello-navy: var(--trello-navy);
+  --color-trello-hero: var(--trello-hero-bg);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+}
+
+/* Global reset */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.trello-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
