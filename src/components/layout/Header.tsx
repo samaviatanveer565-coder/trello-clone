@@ -15,25 +15,25 @@ export default function Header() {
                         />
                     </a>
 
-                    <nav className="flex h-full items-center gap-[28px] text-[15px] font-semibold text-trello-navy">
+                    <nav className="flex h-full items-center gap-[30px] text-[15px] font-semibold text-trello-navy">
 
-                        <a href="#features" className="whitespace-nowrap">
+                        <a href="#features" className="inline-flex items-center gap-[4px] whitespace-nowrap">
                             Features <ChevronDown size={16} strokeWidth={2.5} />
                         </a>
 
-                        <a href="#solutions" className="whitespace-nowrap">
+                        <a href="#solutions" className="inline-flex items-center gap-[4px] whitespace-nowrap">
                             Solutions <ChevronDown size={16} strokeWidth={2.5} />
                         </a>
 
-                        <a href="#plans" className="whitespace-nowrap">
+                        <a href="#plans" className="inline-flex items-center gap-[4px] whitespace-nowrap">
                             Plans <ChevronDown size={16} strokeWidth={2.5} />
                         </a>
 
-                        <a href="#pricing" className="whitespace-nowrap">
+                        <a href="#pricing" className="inline-flex items-center gap-[4px] whitespace-nowrap">
                             Pricing
                         </a>
 
-                        <a href="#resources" className="whitespace-nowrap">
+                        <a href="#resources" className="inline-flex items-center gap-[4px] whitespace-nowrap">
                             Resources <ChevronDown size={16} strokeWidth={2.5} />
                         </a>
 
