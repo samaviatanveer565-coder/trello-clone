@@ -1,4 +1,5 @@
 import WorkSmarterCard from "./WorkSmarterCard";
+import RevealOnScroll from "../../common/RevealOnScroll";
 
 const features = [
     {
@@ -62,6 +63,7 @@ export default function WorkSmarterSection() {
                 </div>
 
                 {/* Three cards */}
+                
                 <div
                     className="
             mt-[50px] grid grid-cols-1
@@ -69,8 +71,14 @@ export default function WorkSmarterSection() {
             lg:grid-cols-3
           "
                 >
-                    {features.map((feature) => (
-                        <WorkSmarterCard
+                    {features.map((feature,index ) => ( // .map har item k sath uski position bhi deta h usko index kehty hain.
+                       <RevealOnScroll
+    key={feature.id}
+    repeat
+    direction="up"
+    delay={index * 150} // 1st card k liay index 0 next k liay 1 then 2
+>
+                       <WorkSmarterCard
                             key={feature.id}
                             title={feature.title}
                             description={feature.description}
@@ -78,6 +86,7 @@ export default function WorkSmarterSection() {
                             buttonText={feature.buttonText}
                             buttonLink={feature.buttonLink}
                         />
+                        </RevealOnScroll>
                     ))}
                 </div>
             </div>

@@ -1,6 +1,7 @@
 //MessageActionSection poore section ka parent hoga.
 //Iski responsibility blue background, heading, cards ka order aur data manage karna hogi.
 import MessageActionCard from "./MessageActionCard";
+import RevealOnScroll from "../../common/RevealOnScroll";
 
 const cards = [
     {
@@ -49,16 +50,23 @@ export default function MessageActionSection() {
 
                 {/* Reusable cards */}
                 <div className="flex flex-col gap-[55px]">
-                    {cards.map((card) => (
-                        <MessageActionCard
+                    {cards.map((card, index) => (
+                        <RevealOnScroll
                             key={card.id}
-                            title={card.title}
-                            description={card.description}
-                            image={card.image}
-                            imageAlt={card.imageAlt}
-                            iconColor={card.iconColor}
-                            reverse={card.reverse}
-                        />
+                            repeat
+                            direction={index === 0 ? "left" : "right"}
+                            exitEarly
+                        >
+                            <MessageActionCard
+                                key={card.id}
+                                title={card.title}
+                                description={card.description}
+                                image={card.image}
+                                imageAlt={card.imageAlt}
+                                iconColor={card.iconColor}
+                                reverse={card.reverse}
+                            />
+                        </RevealOnScroll>
                     ))}
                 </div>
 

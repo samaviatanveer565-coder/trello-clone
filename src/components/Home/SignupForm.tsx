@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import RevealOnScroll from "../common/RevealOnScroll";
 
 type SignupFormProps = {
     variant?: "hero" | "cta";
@@ -22,6 +23,7 @@ export default function SignupForm({
     }
 
     return (
+        <RevealOnScroll repeat direction="zoom">
         <form
             onSubmit={handleSubmit}
             className={`
@@ -64,5 +66,6 @@ export default function SignupForm({
                 Sign up - it’s free!
             </button>
         </form>
+        </RevealOnScroll>
     );
 }
