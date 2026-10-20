@@ -8,6 +8,7 @@ import WorkSmarterSection from "./components/Home/WorkSmarter/WorkSmarterSection
 import TestimonialsSection from "./components/Home/Testimonials/TestimonialsSection";
 import SignupCTA from "./components/Home/SignupCTA";
 import Footer from "./components/layout/Footer/Footer";
+import RevealOnScroll from "./components/common/RevealOnScroll";
 function App() {
   return (
     <>
@@ -16,10 +17,20 @@ function App() {
 
       <main>
         <Hero />
-        <Trello101 />
-        <MessageActionSection />
-        <WorkSmarterSection />
-        <TestimonialsSection />
+        <RevealOnScroll repeat exitUp>
+          <Trello101 />
+        </RevealOnScroll>
+
+        <RevealOnScroll repeat exitUp>
+          <MessageActionSection />
+        </RevealOnScroll>
+
+        <RevealOnScroll repeat exitUp>
+          <WorkSmarterSection />
+        </RevealOnScroll>
+        <RevealOnScroll repeat exitUp>
+          <TestimonialsSection />
+        </RevealOnScroll>
         <SignupCTA />
         <Footer />
       </main>

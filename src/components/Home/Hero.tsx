@@ -4,13 +4,13 @@ export default function Hero() {
     return (
         <section
             id="hero"
-            className="w-full overflow-hidden bg-[#F4F5F7] pt-[100px]"
+            className="w-full min-h-[calc(100vh-120px)] overflow-hidden bg-[#F4F5F7] pt-[100px]"
         >
             <div
                 className="
           mx-auto
           grid
-          min-h-[0px]
+          min-h-[calc(100vh-220px)]
           w-full
           max-w-[1200px]
           grid-cols-2
@@ -126,8 +126,8 @@ export default function Hero() {
             flex
             h-full
             w-full
-            items-center
-            justify-start
+            items-end
+            justify-end
             max-md:justify-center
           "
                 >
@@ -141,7 +141,7 @@ export default function Hero() {
                         className="
               block
               h-auto
-              w-[650px]
+              w-[750px]
               max-w-none
               max-md:w-full
               max-md:max-w-[540px]

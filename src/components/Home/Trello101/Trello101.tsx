@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import RevealOnScroll from "../../common/RevealOnScroll";
 import FeatureTab from "./FeatureTab";
 import FeaturePreview from "./FeaturePreview";
 
@@ -58,6 +58,7 @@ export default function Trello101() {
                 <div className="mt-[50px] grid grid-cols-1 items-start gap-[25px] md:grid-cols-[350px_minmax(0,1fr)]">
 
                     {/* Left: Feature selection */}
+                    <RevealOnScroll repeat direction="left" exitEarly>
                     <div className="flex flex-col gap-[14px]">
                         {features.map((feature) => (
                             <FeatureTab
@@ -69,12 +70,15 @@ export default function Trello101() {
                             />
                         ))}
                     </div>
+                    </RevealOnScroll>
 
                     {/* Right: Selected original image */}
+                    <RevealOnScroll repeat direction="right" exitEarly>
                     <FeaturePreview
                         image={selectedFeature.image}
                         title={selectedFeature.title}
                     />
+                    </RevealOnScroll>
                 </div>
             </div>
         </section>
