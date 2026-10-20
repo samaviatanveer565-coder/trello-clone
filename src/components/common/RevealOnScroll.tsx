@@ -9,7 +9,18 @@ type RevealOnScrollProps = {
     exitEarly?: boolean;
 };
 
+<<<<<<< HEAD
 export default function RevealOnScroll({ children, repeat, exitUp = false, direction = "up", delay = 0, exitEarly = false, }: RevealOnScrollProps) {
+=======
+export default function RevealOnScroll({ 
+    children, 
+    repeat, 
+    exitUp = false, 
+    direction = "up", 
+    delay = 0, 
+    exitEarly = false,
+ }: RevealOnScrollProps) {
+>>>>>>> f203187 ( changing hidden classes)
     const elementRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
     const [exitDirection, setExitDirection] = useState<"up" | "down">("down");
@@ -73,8 +84,13 @@ export default function RevealOnScroll({ children, repeat, exitUp = false, direc
 
     const hiddenClasses = {
         up: "translate-y-[40px] ",
+<<<<<<< HEAD
         left: "-translate-x-[80px] ",
         right: "translate-x-[80px] ",
+=======
+        left: "-translate-x-[280px] ",
+        right: "translate-x-[280px] ",
+>>>>>>> f203187 ( changing hidden classes)
         zoom: "scale-90 ",
     };
 
