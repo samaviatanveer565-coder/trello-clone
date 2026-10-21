@@ -10,8 +10,28 @@ import SignupCTA from "./components/Home/SignupCTA";
 import Footer from "./components/layout/Footer/Footer";
 import RevealOnScroll from "./components/common/RevealOnScroll";
 import { useWindowVirtualizer } from "@tanstack/react-virtual";
-import { useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 function App() {
+  const mainRef = useRef<HTMLElement>(null);
+  const [mainOffset, setMainOffset] = useState(0);
+  
+  useLayoutEffect(() => {
+  const updateMainOffset = () => {
+    if (!mainRef.current) return;
+
+    const rect = mainRef.current.getBoundingClientRect();
+
+    setMainOffset(rect.top + window.scrollY);
+  };
+
+  updateMainOffset();
+
+  window.addEventListener("resize", updateMainOffset);
+
+  return () => {
+    window.removeEventListener("resize", updateMainOffset);
+  };
+}, []);
   const virtualizer = useWindowVirtualizer({
     count: 7,
     estimateSize: () => 800,
@@ -48,7 +68,7 @@ function App() {
       <Header />
       <AnnouncementBanner />
 
-      <main>
+      <main ref={mainRef}>
         <Hero />
         <RevealOnScroll repeat exitUp>
           <Trello101 />
