@@ -10,6 +10,7 @@ import SignupCTA from "./components/Home/SignupCTA";
 import Footer from "./components/layout/Footer/Footer";
 import RevealOnScroll from "./components/common/RevealOnScroll";
 import { useWindowVirtualizer } from "@tanstack/react-virtual";
+import { useRef } from "react";
 function App() {
   const virtualizer = useWindowVirtualizer({
     count: 7,
@@ -17,7 +18,7 @@ function App() {
     overscan: 1,
   });
 
-  // sections banao ( sections array add krain gay )
+  // sections banao ( sections array add krain gay ) har section ka index hoga.
   const sections = [
   <Hero />,
 
