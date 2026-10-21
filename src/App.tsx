@@ -70,24 +70,29 @@ function App() {
       <AnnouncementBanner />
 
       <main ref={mainRef}>
-        <Hero />
-        <RevealOnScroll repeat exitUp>
-          <Trello101 />
-        </RevealOnScroll>
-
-        <RevealOnScroll repeat exitUp>
-          <MessageActionSection />
-        </RevealOnScroll>
-
-        <RevealOnScroll repeat exitUp>
-          <WorkSmarterSection />
-        </RevealOnScroll>
-        <RevealOnScroll repeat exitUp>
-          <TestimonialsSection />
-        </RevealOnScroll>
-        <SignupCTA />
-        <Footer />
-      </main>
+  <div
+    className="relative w-full"
+    style={{
+      height: `${virtualizer.getTotalSize()}px`,// isse offscreen sections unmount hone k bawajood scrolling k liay jaga preserve hoti h.
+    }}
+  >
+    {virtualizer.getVirtualItems().map((virtualItem) => (
+      <div
+        key={virtualItem.key}
+        data-index={virtualItem.index}
+        ref={virtualizer.measureElement}
+        className="absolute top-0 left-0 w-full"
+        style={{
+          transform: `translateY(${
+            virtualItem.start - virtualizer.options.scrollMargin
+          }px)`,
+        }}
+      >
+        {sections[virtualItem.index]}
+      </div>
+    ))}
+  </div>
+</main>
     </>
   );
 }
