@@ -11,14 +11,36 @@ import Footer from "./components/layout/Footer/Footer";
 import RevealOnScroll from "./components/common/RevealOnScroll";
 import { useWindowVirtualizer } from "@tanstack/react-virtual";
 function App() {
-function App() {
   const virtualizer = useWindowVirtualizer({
     count: 7,
     estimateSize: () => 800,
     overscan: 1,
   });
 
-  return (
+  // sections banao ( sections array add krain gay )
+  const sections = [
+  <Hero />,
+
+  <RevealOnScroll repeat exitUp>
+    <Trello101 />
+  </RevealOnScroll>,
+
+  <RevealOnScroll repeat exitUp>
+    <MessageActionSection />
+  </RevealOnScroll>,
+
+  <RevealOnScroll repeat exitUp>
+    <WorkSmarterSection />
+  </RevealOnScroll>,
+
+  <RevealOnScroll repeat exitUp>
+    <TestimonialsSection />
+  </RevealOnScroll>,
+
+  <SignupCTA />,
+
+  <Footer />,
+];
 
   return (
     <>
