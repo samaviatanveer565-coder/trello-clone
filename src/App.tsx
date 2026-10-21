@@ -9,7 +9,10 @@ import TestimonialsSection from "./components/Home/Testimonials/TestimonialsSect
 import SignupCTA from "./components/Home/SignupCTA";
 import Footer from "./components/layout/Footer/Footer";
 import RevealOnScroll from "./components/common/RevealOnScroll";
+import { useWindowVirtualizer } from "@tanstack/react-virtual";
 function App() {
+
+
   return (
     <>
       <Header />
