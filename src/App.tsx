@@ -14,7 +14,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 function App() {
   const mainRef = useRef<HTMLElement>(null);
   const [mainOffset, setMainOffset] = useState(0);
-  
+
   useLayoutEffect(() => {
   const updateMainOffset = () => {
     if (!mainRef.current) return;
@@ -36,6 +36,7 @@ function App() {
     count: 7,
     estimateSize: () => 800,
     overscan: 1,
+    scrollMargin: mainOffset,
   });
 
   // sections banao ( sections array add krain gay ) har section ka index hoga.
