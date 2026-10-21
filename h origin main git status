@@ -1,0 +1,18 @@
+[1mdiff --git a/src/components/common/RevealOnScroll.tsx b/src/components/common/RevealOnScroll.tsx[m
+[1mindex 9573ee1..2d8bfd9 100644[m
+[1m--- a/src/components/common/RevealOnScroll.tsx[m
+[1m+++ b/src/components/common/RevealOnScroll.tsx[m
+[36m@@ -84,13 +84,8 @@[m [mexport default function RevealOnScroll({[m
+ [m
+     const hiddenClasses = {[m
+         up: "translate-y-[40px] ",[m
+[31m-<<<<<<< HEAD[m
+[31m-        left: "-translate-x-[80px] ",[m
+[31m-        right: "translate-x-[80px] ",[m
+[31m-=======[m
+         left: "-translate-x-[280px] ",[m
+         right: "translate-x-[280px] ",[m
+[31m->>>>>>> f203187 ( changing hidden classes)[m
+         zoom: "scale-90 ",[m
+     };[m
+ [m
