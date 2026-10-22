@@ -26,6 +26,11 @@
 --announcement-text: #091e42;
 --announcement-link: #0065ff; 
 
+/* Signup form — Light Mode */
+--input-placeholder: #8993a4;
+--signup-button-bg: #0065ff;
+--signup-button-hover: #0052cc;
+
 
     /* Theme-aware colors: different elements k colours ko independently control krny k liay */
   --page-bg: #ffffff; 
@@ -80,6 +85,11 @@
 --announcement-bg: #253858;
 --announcement-text: #f1f5f9;
 --announcement-link: #85b8ff;
+
+/* Signup form — Dark Mode */
+--input-placeholder: #aab6c8;
+--signup-button-bg: #0052cc;
+--signup-button-hover: #0747a6;
 }
 
 
