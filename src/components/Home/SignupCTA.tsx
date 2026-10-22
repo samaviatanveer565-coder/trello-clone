@@ -1,3 +1,4 @@
+
 import SignupForm from "./SignupForm";
 
 export default function SignupCTA() {
@@ -5,24 +6,25 @@ export default function SignupCTA() {
         <section
             id="signup"
             className="
-        flex min-h-[305px] w-full
-        items-center justify-center
-        bg-[#F4F5F7]
-        px-4 py-[65px]
-      "
+                flex min-h-[305px] w-full
+                items-center justify-center
+                bg-[var(--section-alt-bg)]
+                px-4 py-[65px]
+                transition-colors duration-200
+            "
         >
             <div className="mx-auto w-full max-w-[700px] text-center">
 
                 {/* Heading */}
                 <h2
                     className="
-            font-display
-            text-[28px]
-            leading-[36px]
-            font-extrabold
-            text-[#091E42]
-            max-sm:text-[25px]
-          "
+                        font-display
+                        text-[28px]
+                        leading-[36px]
+                        font-extrabold
+                        text-[var(--text-primary)]
+                        max-sm:text-[25px]
+                    "
                 >
                     Get started with Trello today
                 </h2>
@@ -35,18 +37,18 @@ export default function SignupCTA() {
                 {/* Privacy policy */}
                 <p
                     className="
-            mt-[37px]
-            text-[17px]
-            leading-[26px]
-            text-[#091E42]
-          "
+                        mt-[37px]
+                        text-[17px]
+                        leading-[26px]
+                        text-[var(--text-primary)]
+                    "
                 >
                     By entering my email, I acknowledge the{" "}
                     <a
                         href="https://www.atlassian.com/legal/privacy-policy"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#0065FF] hover:underline"
+                        className="text-trello-blue hover:underline"
                     >
                         Atlassian Privacy Policy
                     </a>
