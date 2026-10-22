@@ -1,3 +1,4 @@
+
 //MessageActionSection poore section ka parent hoga.
 //Iski responsibility blue background, heading, cards ka order aur data manage karna hogi.
 import MessageActionCard from "./MessageActionCard";
@@ -30,8 +31,16 @@ export default function MessageActionSection() {
     return (
         <section
             id="message-action"
-            className="w-full bg-[#0065FF] px-4 pt-[32px] pb-[80px] 
-            bg-[linear-gradient(to_bottom,#0065FF_0%,#0065FF_78%,#FFFFFF_78%,#FFFFFF_100%)]"
+            className="w-full px-4 pt-[32px] pb-[80px]"
+            style={{
+                backgroundImage: `linear-gradient(
+                    to bottom,
+                    var(--message-action-blue) 0%,
+                    var(--message-action-blue) calc(100% - 230px),
+                    var(--message-action-bottom) calc(100% - 230px),
+                    var(--message-action-bottom) 100%
+                )`,
+            }}
         >
             <div className="trello-container relative z-10">
 

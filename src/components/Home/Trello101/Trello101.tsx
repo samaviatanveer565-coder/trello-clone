@@ -38,16 +38,16 @@ export default function Trello101() {
         features[0];
 
     return (
-        <section className="w-full bg-white pt-[10px] pb-[90px]">
+        <section className="w-full bg-[var(--section-bg)] pt-[10px] pb-[90px]">
             <div className="mx-auto w-full max-w-[1200px] px-4">
 
                 {/* Section heading */}
                 <div className="max-w-[550px]">
-                    <p className="text-[15px] font-extrabold uppercase text-[#091E42]">
+                    <p className="text-[15px] font-extrabold uppercase text-[var(--text-primary)]">
                         TRELLO 101
                     </p>
 
-                    <p className="mt-[10px] text-[18px] leading-[26px] text-[#091E42]">
+                    <p className="mt-[10px] text-[18px] leading-[26px] text-[var(--text-primary)]">
                         Stay organized and efficient with Inbox, Boards, and Planner.
                         Every to-do, idea, or responsibility—no matter how small—finds
                         its place, keeping you at the top of your game.

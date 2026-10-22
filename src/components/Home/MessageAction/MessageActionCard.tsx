@@ -23,7 +23,7 @@ export default function MessageActionCard({
         <article
             className={`
         flex w-full flex-col items-center gap-10
-        rounded-[6px] bg-white p-7 shadow-sm
+        rounded-[6px] bg-[var(--message-card-bg)] p-7 shadow-sm
         md:flex-row md:gap-[55px]
         min-h-[300px]
         ${reverse ? "md:flex-row-reverse" : ""}
@@ -47,12 +47,12 @@ export default function MessageActionCard({
                         aria-hidden="true"
                     />
 
-                    <h3 className="text-[13px] font-bold uppercase text-[#091E42]">
+                    <h3 className="text-[13px] font-bold uppercase text-[var(--text-primary)]">
                         {title}
                     </h3>
                 </div>
 
-                <p className="text-[18px] leading-[27px] text-[#091E42]">
+                <p className="text-[18px] leading-[27px] text-[var(--text-primary)]">
                     {description}
                 </p>
             </div>
