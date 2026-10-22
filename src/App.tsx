@@ -9,7 +9,13 @@ import TestimonialsSection from "./components/Home/Testimonials/TestimonialsSect
 import SignupCTA from "./components/Home/SignupCTA";
 import Footer from "./components/layout/Footer/Footer";
 import RevealOnScroll from "./components/common/RevealOnScroll";
+import { useEffect } from "react";
+import { useThemeStore } from "./store/themeStore";
 function App() {
+    const theme = useThemeStore((state) => state.theme); // zustand store say current theme lay rhi h
+    useEffect(() => {
+  document.documentElement.setAttribute("data-theme", theme);// html pr current theme set krna
+}, [theme]);// theme change honay pr html element pr datatheme attribute set hoga, issay hum conditional theme apply kr skaian gay 
   return (
     <>
       <Header />
