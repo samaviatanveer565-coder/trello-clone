@@ -69,7 +69,7 @@ export default function Footer() {
     const [languageOpen, setLanguageOpen] = useState(false);
 
     return (
-        <footer className="w-full bg-[#192B4D] text-white">
+       <footer className="w-full bg-[var(--footer-bg)] text-white transition-colors duration-200">
             <div className="trello-container">
 
                 {/* TOP FOOTER */}

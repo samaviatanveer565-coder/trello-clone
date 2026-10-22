@@ -58,6 +58,9 @@
   --testimonial-arrow-text: #626f86;
   --testimonial-arrow-hover: #dfe1e6;
 
+  /* Footer - Light Mode */
+--footer-bg: #192b4d;
+
 
 
   /* Theme-aware colors: different elements k colours ko independently control krny k liay */
@@ -145,6 +148,9 @@
   --testimonial-arrow-bg: #243653;
   --testimonial-arrow-text: #f1f5f9;
   --testimonial-arrow-hover: #304663;
+
+  /* Footer - Dark Mode */
+--footer-bg: #101b30;
 }
 
 
