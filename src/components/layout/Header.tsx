@@ -10,7 +10,7 @@ export default function Header() {
             <div className="mx-auto flex h-full w-full max-w-[1350px] items-center justify-between">
 
                 {/* Logo + Navigation */}
-                <div className="flex h-full items-center gap-[29px]">
+                <div className="flex h-full items-center gap-[20px]">
 
                     <a href="/" className="flex shrink-0 items-center ">
                         <img
@@ -20,7 +20,7 @@ export default function Header() {
                         />
                     </a>
 
-                    <nav className="flex h-full items-center gap-[30px] text-[15px] font-semibold text-trello-navy">
+                    <nav className="flex h-full items-center gap-[22px] text-[15px] font-semibold text-trello-navy">
 
                         <button
                             type="button"
