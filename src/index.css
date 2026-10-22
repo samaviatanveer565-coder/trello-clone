@@ -10,6 +10,22 @@
   --trello-white: #ffffff;
   --trello-border: #dfe1e6;
 
+  --header-cta-bg: #0065ff;
+--header-cta-hover: #0052cc;
+/* Light mode */
+--section-bg: #ffffff;
+--section-alt-bg: #f4f5f7;
+--text-primary: #091e42;
+--text-secondary: #44546f;
+--input-bg: #ffffff;
+--input-text: #091e42;
+--card-hover-bg: #e9edf3;
+
+    /* Theme-aware colors: different elements k colours ko independently control krny k liay */
+  --page-bg: #ffffff; 
+  --surface-bg: #ffffff;
+  --card-bg: #f8f9fa;
+
   --font-body: "Nunito Sans", Arial, sans-serif;
   --font-heading: "Nunito Sans", Arial, sans-serif;
 
@@ -18,15 +34,47 @@
 
   font-family: var(--font-body);
   color: var(--trello-navy);
-  background: var(--trello-white);
+  background: var(--page-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
+
+/* Dark mode colors */
+:root[data-theme="dark"] {
+  --trello-blue: #579dff;
+  --trello-blue-hover: #85b8ff;
+  --trello-navy: #f1f5f9;
+  --trello-hero-bg: #172b4d;
+  --trello-white: #172b4d;
+  --trello-border: #42526e;
+
+  --header-cta-bg: #0052cc;
+  --header-cta-hover: #0747a6;
+
+  /* Existing theme-aware colors */
+  --page-bg: #101828;
+  --surface-bg: #172b4d;
+  --card-bg: #243653;
+
+  /* Step 2: Section colors */
+  --section-bg: #101828;
+  --section-alt-bg: #172b4d;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --input-bg: #243653;
+  --input-text: #f1f5f9;
+  --card-hover-bg: #304663;
+
+  color-scheme: dark;
+}
+
+
+
 /* Tailwind v4 theme tokens */
-@theme inline {
+@theme inline { 
   --color-trello-blue: var(--trello-blue);
   --color-trello-navy: var(--trello-navy);
   --color-trello-hero: var(--trello-hero-bg);
@@ -47,6 +95,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  background-color: var(--page-bg);
 }
 
 button,
