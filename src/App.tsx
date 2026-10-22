@@ -9,31 +9,90 @@ import TestimonialsSection from "./components/Home/Testimonials/TestimonialsSect
 import SignupCTA from "./components/Home/SignupCTA";
 import Footer from "./components/layout/Footer/Footer";
 import RevealOnScroll from "./components/common/RevealOnScroll";
+import { useWindowVirtualizer } from "@tanstack/react-virtual";
+import { useLayoutEffect, useRef, useState } from "react";
 function App() {
+  const mainRef = useRef<HTMLElement>(null);
+  const [mainOffset, setMainOffset] = useState(0);
+
+  useLayoutEffect(() => {
+  const updateMainOffset = () => {
+    if (!mainRef.current) return;
+
+    const rect = mainRef.current.getBoundingClientRect();
+
+    setMainOffset(rect.top + window.scrollY);
+  };
+
+  updateMainOffset();
+
+  window.addEventListener("resize", updateMainOffset);
+
+  return () => {
+    window.removeEventListener("resize", updateMainOffset);
+  };
+}, []);
+  const virtualizer = useWindowVirtualizer({
+    count: 7,
+    estimateSize: () => 800,
+    overscan: 1,
+    scrollMargin: mainOffset,
+  });
+
+  // sections banao ( sections array add krain gay ) har section ka index hoga.
+  const sections = [
+  <Hero />,
+
+  <RevealOnScroll repeat exitUp>
+    <Trello101 />
+  </RevealOnScroll>,
+
+  <RevealOnScroll repeat exitUp>
+    <MessageActionSection />
+  </RevealOnScroll>,
+
+  <RevealOnScroll repeat exitUp>
+    <WorkSmarterSection />
+  </RevealOnScroll>,
+
+  <RevealOnScroll repeat exitUp>
+    <TestimonialsSection />
+  </RevealOnScroll>,
+
+  <SignupCTA />,
+
+  <Footer />,
+];
+
   return (
     <>
       <Header />
       <AnnouncementBanner />
 
-      <main>
-        <Hero />
-        <RevealOnScroll repeat exitUp>
-          <Trello101 />
-        </RevealOnScroll>
-
-        <RevealOnScroll repeat exitUp>
-          <MessageActionSection />
-        </RevealOnScroll>
-
-        <RevealOnScroll repeat exitUp>
-          <WorkSmarterSection />
-        </RevealOnScroll>
-        <RevealOnScroll repeat exitUp>
-          <TestimonialsSection />
-        </RevealOnScroll>
-        <SignupCTA />
-        <Footer />
-      </main>
+      <main ref={mainRef}>
+  <div
+    className="relative w-full"
+    style={{
+      height: `${virtualizer.getTotalSize()}px`,// isse offscreen sections unmount hone k bawajood scrolling k liay jaga preserve hoti h.
+    }}
+  >
+    {virtualizer.getVirtualItems().map((virtualItem) => (
+      <div
+        key={virtualItem.key}
+        data-index={virtualItem.index}
+        ref={virtualizer.measureElement}
+        className="absolute top-0 left-0 w-full"
+        style={{
+          transform: `translateY(${
+            virtualItem.start - virtualizer.options.scrollMargin
+          }px)`,
+        }}
+      >
+        {sections[virtualItem.index]}
+      </div>
+    ))}
+  </div>
+</main>
     </>
   );
 }
