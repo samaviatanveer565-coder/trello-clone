@@ -101,10 +101,10 @@ function App() {
               data-index={virtualItem.index}
               ref={virtualizer.measureElement}
               className="absolute top-0 left-0 w-full"
+              
               style={{
-                transform: `translateY(${
-                  virtualItem.start - virtualizer.options.scrollMargin
-                }px)`,
+                transform: `translateY(${virtualItem.start - virtualizer.options.scrollMargin
+                  }px)`,
               }}
             >
               {sections[virtualItem.index]}
