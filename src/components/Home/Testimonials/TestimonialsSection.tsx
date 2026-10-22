@@ -63,7 +63,7 @@ export default function TestimonialsSection() {
     return (
         <section
             id="testimonials"
-            className="w-full  bg-white px-4 pt-[40px] pb-[75px]"
+            className="w-full  bg-[var(--section-bg)] px-4 pt-[40px] pb-[75px]"
         >
             <div className="trello-container ">
 
@@ -94,8 +94,8 @@ export default function TestimonialsSection() {
                   focus-visible:outline-offset-4
                   focus-visible:outline-[#0065FF]
                   ${activeIndex === index
-                                            ? "bg-[#091E42]"
-                                            : "bg-[#A5ADBA] hover:bg-[#42526E]"
+                                            ? "bg-[var(--testimonial-dot-active)]"
+                                            : "bg-[var(--testimonial-dot-inactive)] hover:bg-[var(--testimonial-dot-hover)]"
                                         }
                 `}
                                 />
@@ -110,10 +110,10 @@ export default function TestimonialsSection() {
                             className="
               flex h-[30px] w-[30px]
               items-center justify-center
-              rounded-full bg-[#F1F2F4]
-              text-[#626F86] hover:bg-[#DFE1E6]
+              rounded-full bg-[var(--testimonial-arrow-bg)]
+              text-[var(--testimonial-arrow-text)] hover:bg-[var(--testimonial-arrow-hover)]
               focus-visible:outline-2
-              focus-visible:outline-[#0065FF]
+              focus-visible:outline-trello-blue
             "
                         >
                             <svg
