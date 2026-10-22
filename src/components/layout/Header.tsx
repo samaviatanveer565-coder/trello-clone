@@ -8,7 +8,7 @@ export default function Header() {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     return (
         <header className="relative z-50 h-[60px] w-full bg-[var(--surface-bg)]">
-            <div className="mx-auto flex h-full w-full max-w-[1350px] items-center justify-between">
+            <div className="mx-auto flex h-full w-full max-w-[1350px] items-center justify-between pl-[85px]">
 
                 {/* Logo + Navigation */}
                 <div className="flex h-full items-center gap-[20px]">
