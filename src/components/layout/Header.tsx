@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import MegaMenu from "./Navbar/MegaMenu";
 import { featuresMenu, solutionsMenu, plansMenu, resourcesMenu } from "./Navbar/menuData";
+import ThemeToggle from "../common/ThemeToggle";
 
 export default function Header() {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -83,6 +84,9 @@ export default function Header() {
 
                 {/* Right Buttons */}
                 <div className="flex h-full shrink-0 items-center">
+                    <div className="mr-4">
+                        <ThemeToggle />
+                    </div>
 
                     <a
                         href="#login"
