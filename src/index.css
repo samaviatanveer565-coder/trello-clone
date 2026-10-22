@@ -38,6 +38,17 @@
 --preview-surface-bg: #f1f2f4;
 --carousel-dot-bg: #091e42;
 
+/* Message Action - Light Mode */
+--message-action-blue: #0065ff;
+--message-action-bottom: #ffffff;
+--message-card-bg: #ffffff;
+
+/* Work Smarter buttons - Light Mode */
+--work-button-bg: #ffffff;
+--work-button-border: #0065ff;
+--work-button-text: #0065ff;
+--work-button-hover: #deebff;
+
 
     /* Theme-aware colors: different elements k colours ko independently control krny k liay */
   --page-bg: #ffffff; 
@@ -104,6 +115,17 @@
 --feature-tab-accent: #57d9f3;
 --preview-surface-bg: #243653;
 --carousel-dot-bg: #f1f5f9;
+
+/* Message Action - Dark Mode */
+--message-action-blue: #0065ff;
+--message-action-bottom: #101828;
+--message-card-bg: #243653;
+
+/* Work Smarter buttons - Dark Mode */
+--work-button-bg: #243653;
+--work-button-border: #85b8ff;
+--work-button-text: #85b8ff;
+--work-button-hover: #304663;
 
 
 }

@@ -17,7 +17,7 @@ export default function WorkSmarterCard({
     <article
       className="
         flex h-full min-h-[350px] flex-col
-        rounded-[5px] bg-[#F8F9FA]
+        rounded-[5px] bg-[var(--card-bg)]
         w-[340px]
         px-[20px] pt-[28px] pb-[20px]
       "
@@ -34,7 +34,7 @@ export default function WorkSmarterCard({
       <h3
         className="
           mt-[18px] text-[22px] leading-[26px]
-          font-bold text-[#091E42]
+          font-bold text-[var(--text-primary)]
         "
       >
         {title}
@@ -44,7 +44,7 @@ export default function WorkSmarterCard({
       <p
         className="
           mt-[8px] text-[17px] leading-[21px]
-          text-[#091E42] pb-[5px]
+         text-[var(--text-primary)] pb-[5px]
         "
       >
         {description}
@@ -57,11 +57,11 @@ export default function WorkSmarterCard({
           className="
             inline-flex min-h-[50px] items-center
             justify-center rounded-[4px]
-            border border-[#0065FF]
-            bg-white px-[15px] py-[3px]
-            text-[14px] font-bold text-[#0065FF]
+            border border-[var(--work-button-border)]
+           bg-[var(--work-button-bg)] px-[15px] py-[3px]
+            text-[14px] font-bold text-[var(--work-button-text)]
             transition-colors duration-200
-            hover:bg-[#DEEBFF] 
+            hover:bg-[var(--work-button-hover)]
             focus-visible:outline-2
             focus-visible:outline-offset-2
             focus-visible:outline-[#0065FF]
