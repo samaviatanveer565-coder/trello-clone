@@ -21,6 +21,12 @@
 --input-text: #091e42;
 --card-hover-bg: #e9edf3;
 
+/* Announcement Banner - Light Mode */
+--announcement-bg: #deebff;
+--announcement-text: #091e42;
+--announcement-link: #0065ff; 
+
+
     /* Theme-aware colors: different elements k colours ko independently control krny k liay */
   --page-bg: #ffffff; 
   --surface-bg: #ffffff;
@@ -69,6 +75,11 @@
   --card-hover-bg: #304663;
 
   color-scheme: dark;
+
+  /* Announcement Banner - Dark Mode */
+--announcement-bg: #253858;
+--announcement-text: #f1f5f9;
+--announcement-link: #85b8ff;
 }
 
 
