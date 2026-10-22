@@ -31,6 +31,13 @@
 --signup-button-bg: #0065ff;
 --signup-button-hover: #0052cc;
 
+/* Trello101 tabs - Light Mode */
+--feature-tab-active-bg: #f1f2f4;
+--feature-tab-hover-bg: #f7f8f9;
+--feature-tab-accent: #00c7e5;
+--preview-surface-bg: #f1f2f4;
+--carousel-dot-bg: #091e42;
+
 
     /* Theme-aware colors: different elements k colours ko independently control krny k liay */
   --page-bg: #ffffff; 
@@ -90,6 +97,15 @@
 --input-placeholder: #aab6c8;
 --signup-button-bg: #0052cc;
 --signup-button-hover: #0747a6;
+
+/* Trello101 tabs - Dark Mode */
+--feature-tab-active-bg: #243653;
+--feature-tab-hover-bg: #1d2b42;
+--feature-tab-accent: #57d9f3;
+--preview-surface-bg: #243653;
+--carousel-dot-bg: #f1f5f9;
+
+
 }
 
 

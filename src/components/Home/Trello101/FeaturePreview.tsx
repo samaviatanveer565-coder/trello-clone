@@ -17,13 +17,13 @@ export default function FeaturePreview({
                 {[0, 1, 2].map((dot) => (
                     <span
                         key={dot}
-                        className="carousel-dot bg-[#091E42]"
+                        className="carousel-dot bg-[var(--carousel-dot-bg)]]"
                     />
                 ))}
             </div>
 
             {/* Original Trello illustration */}
-            <div className="flex aspect-[625/420] w-full items-center justify-center overflow-hidden rounded-[9px] bg-[#F1F2F4]">
+            <div className="flex aspect-[625/420] w-full items-center justify-center overflow-hidden rounded-[9px] bg-[var(--preview-surface-bg)]">
                 <img
                     src={image}
                     alt={title}

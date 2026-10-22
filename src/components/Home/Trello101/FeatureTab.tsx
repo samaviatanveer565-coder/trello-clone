@@ -20,16 +20,16 @@ export default function FeatureTab({
         w-full rounded-[6px] border-l-[6px] px-[15px] py-[14px]
         text-left transition-all duration-200
         ${isActive
-                    ? "border-[#00C7E5] bg-[#F1F2F4] shadow-md"
-                    : "border-transparent bg-transparent hover:bg-[#F7F8F9]"
+                    ? "border-[var(--feature-tab-accent)] bg-[var(--feature-tab-active-bg)] shadow-md"
+                    : "border-transparent bg-transparent hover:bg-[var(--feature-tab-hover-bg)]"
                 }
       `}
         >
-            <h3 className="text-[18px] font-bold text-[#091E42]">
+            <h3 className="text-[18px] font-bold text-[var(--text-primary)]">
                 {title}
             </h3>
 
-            <p className="mt-[8px] text-[17px] leading-[px] text-[#091E42]">
+            <p className="mt-[8px] text-[17px] leading-[px] text-[var(--text-secondary)]">
                 {description}
             </p>
         </button>
