@@ -1,4 +1,3 @@
-
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -202,10 +201,9 @@ export default function TestimonialsSection() {
         <section
             ref={sectionRef}
             id="testimonials"
-            className="
-        w-full bg-[var(--section-bg)]
-        px-4 pt-[40px] pb-[75px]
-      "
+
+            className="w-full bg-[var(--section-bg)] px-4 pt-[40px] pb-[75px]"
+
         >
             <div className="trello-container">
 
@@ -239,7 +237,7 @@ export default function TestimonialsSection() {
                                             ? "bg-[var(--testimonial-dot-active)]"
                                             : "bg-[var(--testimonial-dot-inactive)] hover:bg-[var(--testimonial-dot-hover)]"
                                         }
-                  `}
+                    `}
                                 />
                             ))}
                         </div>
@@ -259,6 +257,7 @@ export default function TestimonialsSection() {
                 focus-visible:outline-2
                 focus-visible:outline-[var(--trello-blue)]
               "
+
                         >
                             <svg
                                 width="18"
@@ -372,6 +371,6 @@ export default function TestimonialsSection() {
                 <TrustedBrands />
 
             </div>
-        </section>
+        </section >
     );
 }

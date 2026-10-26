@@ -20,8 +20,8 @@ export default function TestimonialSlide({
       className="
         grid min-h-[490px] w-full max-w-[1160px] grid-cols-1
         overflow-hidden rounded-[8px]
-        border border-[#DFE1E6]
-        bg-white shadow-md
+        border border-[var(--trello-border)]
+       bg-[var(--surface-bg)] shadow-md
         md:grid-cols-[2fr_1fr]
       "
     >
@@ -30,7 +30,7 @@ export default function TestimonialSlide({
         <blockquote
           className="
             m-0 text-[20px] leading-[31px]
-            text-[#091E42]
+            text-[var(--text-primary)]
           "
         >
           {testimonial.quote}
@@ -40,15 +40,15 @@ export default function TestimonialSlide({
           <div
             className="
               mb-[16px] h-[1px] w-[124px]
-              bg-[#091E42]
+             bg-[var(--text-primary)]
             "
           />
 
-          <p className="text-[14px] text-[#091E42]">
+          <p className="text-[14px] text-[var(--text-primary)]">
             {testimonial.author}
           </p>
 
-          <p className="text-[14px] leading-[21px] text-[#091E42]">
+          <p className="text-[14px] leading-[21px] text-[var(--text-primary)]">
             {testimonial.position}
           </p>
 
@@ -57,12 +57,13 @@ export default function TestimonialSlide({
               src={testimonial.logo}
               alt={testimonial.logoAlt}
               className="
-                h-[36px] w-auto max-w-[170px]
-                object-contain object-left
-              "
+    testimonial-logo
+    h-[36px] w-auto max-w-[170px]
+    object-contain object-left
+  "
             />
 
-            <span className="shrink-0 text-[14px] text-[#0065FF]">
+            <span className="shrink-0 text-[14px] text-trello-blue">
               Read the story
             </span>
           </div>

@@ -42,11 +42,11 @@ export default function SignupForm({
                 onChange={(event) => setEmail(event.target.value)}
                 className={`
           h-[48px] max-w-full rounded-[4px]
-          border border-[#DFE1E6] bg-white
-          px-[11px] text-[14px] text-[#091E42]
-          outline-none placeholder:text-[#8993A4]
-          focus:border-[#0065FF]
-          focus:ring-1 focus:ring-[#0065FF]
+          border border-[var(--trello-border)] bg-[var(--input-bg)]
+          px-[11px] text-[14px] text-[var(--input-text)]
+          outline-none placeholder:text-[var(--input-placeholder)]
+          focus:border-trello-blue
+          focus:ring-1 focus:ring-trello-blue
           max-sm:w-full
           ${isCTA ? "w-[323px]" : "w-[280px]"}
         `}
@@ -57,9 +57,9 @@ export default function SignupForm({
                 className="
           flex h-[48px] items-center justify-center
           whitespace-nowrap rounded-[4px]
-          bg-[#0065FF] px-[15px]
+          bg-[var(--signup-button-bg)] px-[15px]
           text-[16px] font-bold text-white
-          transition-colors hover:bg-[#0052CC]
+          transition-colors hover:bg-[var(--signup-button-hover)]
           max-sm:w-full
         "
             >

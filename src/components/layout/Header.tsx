@@ -2,15 +2,16 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import MegaMenu from "./Navbar/MegaMenu";
 import { featuresMenu, solutionsMenu, plansMenu, resourcesMenu } from "./Navbar/menuData";
+import ThemeToggle from "../common/ThemeToggle";
 
 export default function Header() {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     return (
-        <header className="relative z-50 h-[60px] w-full bg-white">
-            <div className="mx-auto flex h-full w-full max-w-[1350px] items-center justify-between">
+        <header className="relative z-50 h-[60px] w-full bg-[var(--surface-bg)]">
+            <div className="mx-auto flex h-full w-full max-w-[1350px] items-center justify-between pl-[85px]">
 
                 {/* Logo + Navigation */}
-                <div className="flex h-full items-center gap-[29px]">
+                <div className="flex h-full items-center gap-[20px]">
 
                     <a href="/" className="flex shrink-0 items-center ">
                         <img
@@ -20,7 +21,7 @@ export default function Header() {
                         />
                     </a>
 
-                    <nav className="flex h-full items-center gap-[30px] text-[15px] font-semibold text-trello-navy">
+                    <nav className="flex h-full items-center gap-[22px] text-[15px] font-semibold text-trello-navy">
 
                         <button
                             type="button"
@@ -29,7 +30,7 @@ export default function Header() {
                             }
                             aria-expanded={openMenu === "features"}
                             aria-controls="features-menu"
-                            className="inline-flex h-full items-center gap-[4px] whitespace-nowrap hover:text-[#0065FF]"
+                            className="inline-flex h-full items-center gap-[4px] whitespace-nowrap hover:text-trello-blue"
                         >
                             Features
                             <ChevronDown size={16} strokeWidth={2.5} />
@@ -42,7 +43,7 @@ export default function Header() {
                             }
                             aria-expanded={openMenu === "solutions"}
                             aria-controls="solutions-menu"
-                            className="inline-flex h-full items-center gap-[4px] whitespace-nowrap hover:text-[#0065FF]"
+                            className="inline-flex h-full items-center gap-[4px] whitespace-nowrap hover:text-trello-blue"
                         >
                             Solutions
                             <ChevronDown size={16} strokeWidth={2.5} />
@@ -56,7 +57,7 @@ export default function Header() {
                             }
                             aria-expanded={openMenu === "plans"}
                             aria-controls="plans-menu"
-                            className="inline-flex h-full items-center gap-[4px] whitespace-nowrap hover:text-[#0065FF]"
+                            className="inline-flex h-full items-center gap-[4px] whitespace-nowrap hover:text-trello-blue"
                         >
                             Plans <ChevronDown size={16} strokeWidth={2.5} />
                         </button>
@@ -72,7 +73,7 @@ export default function Header() {
                             }
                             aria-expanded={openMenu === "resources"}
                             aria-controls="resources-menu"
-                            className="inline-flex h-full items-center gap-[4px] whitespace-nowrap hover:text-[#0065FF]"
+                            className="inline-flex h-full items-center gap-[4px] whitespace-nowrap hover:text-trello-blue"
                         >
                             Resources
                             <ChevronDown size={16} strokeWidth={2.5} />
@@ -83,6 +84,9 @@ export default function Header() {
 
                 {/* Right Buttons */}
                 <div className="flex h-full shrink-0 items-center">
+                    <div className="mr-4">
+                        <ThemeToggle />
+                    </div>
 
                     <a
                         href="#login"
@@ -93,7 +97,7 @@ export default function Header() {
 
                     <a
                         href="#signup"
-                        className="flex h-full items-center justify-center bg-trello-blue px-[20px] text-[16px] text-white font-bold  transition-colors hover:bg-[#0052CC]"
+                        className="flex h-full items-center justify-center bg-[var(--header-cta-bg)]  px-[20px] text-[16px] text-white font-bold  transition-colors hover:bg-[var(--trello-blue-hover)]"
                     >
                         Get Trello for free
                     </a>

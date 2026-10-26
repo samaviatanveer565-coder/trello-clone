@@ -35,7 +35,7 @@ export default function WorkSmarterSection() {
     return (
         <section
             id="work-smarter"
-            className="w-full bg-white px-4 pt-[4px] pb-[90px]"
+            className="w-full bg-[var(--section-bg)] px-4 pt-[4px] pb-[90px]"
         >
             <div className="trello-container">
 
@@ -44,7 +44,7 @@ export default function WorkSmarterSection() {
                     <h2
                         className="
               text-[17px] font-extrabold
-              uppercase text-[#091E42]
+              uppercase text-[var(--text-primary)]
             "
                     >
                         WORK SMARTER
@@ -53,7 +53,7 @@ export default function WorkSmarterSection() {
                     <p
                         className="
               mt-[8px] text-[20px]
-              leading-[26px] text-[#091E42]
+              leading-[26px] text-[var(--text-primary)]
             "
                     >
                         Customize the way you organize with easy

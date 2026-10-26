@@ -4,7 +4,7 @@ export default function Hero() {
     return (
         <section
             id="hero"
-            className="w-full min-h-[calc(100vh-120px)] overflow-hidden bg-[#F4F5F7] pt-[100px]"
+            className="w-full min-h-[calc(100vh-120px)] overflow-hidden bg-trello-hero pt-[100px] transition-colors duration-200"
         >
             <div
                 className="
@@ -34,7 +34,7 @@ export default function Hero() {
               leading-[1.2]
               font-extrabold
               tracking-[-0.7px]
-              text-[#091E42]
+              text-[var(--text-primary)]
               max-md:text-[34px]
               max-sm:text-[30px]
             "
@@ -48,7 +48,7 @@ export default function Hero() {
               max-w-[475px]
               text-[20px]
               leading-[29px]
-              text-[#091E42]
+                text-[var(--text-primary)]
             "
                     >
                         Escape the clutter and chaos—unleash your productivity
@@ -65,7 +65,7 @@ export default function Hero() {
               max-w-[465px]
               text-[18px]
               leading-[28px]
-              text-[#091E42]
+                   text-[var(--text-primary)]
             "
                     >
                         By entering my email, I acknowledge the{" "}
@@ -73,7 +73,7 @@ export default function Hero() {
                             href="https://www.atlassian.com/legal/privacy-policy"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#0065FF] hover:underline"
+                            className="text-trello-blue hover:underline"
                         >
                             Atlassian Privacy Policy
                         </a>
@@ -87,7 +87,7 @@ export default function Hero() {
               items-center
               gap-[9px]
               text-[17px]
-              text-[#0065FF]
+              text-trello-blue
               font-bold
               hover:underline
             "
@@ -103,7 +103,7 @@ export default function Hero() {
                 justify-center
                 rounded-full
                 border
-                border-[#0065FF]
+                border-trello-blue
               "
                             aria-hidden="true"
                         >
