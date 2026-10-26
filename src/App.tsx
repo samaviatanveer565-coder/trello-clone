@@ -28,9 +28,10 @@ function App() {
         <RevealOnScroll repeat exitUp>
           <WorkSmarterSection />
         </RevealOnScroll>
-        <RevealOnScroll repeat exitUp>
-          <TestimonialsSection />
-        </RevealOnScroll>
+
+        {/* GSAP Horizontal Scroll Testimonials */}
+<TestimonialsSection />
+
         <SignupCTA />
         <Footer />
       </main>
