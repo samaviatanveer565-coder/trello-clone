@@ -79,7 +79,9 @@ function App() {
 
   return (
     <>
-      <Header />
+     <div className="sticky top-0 z-50">
+  <Header />
+</div>
       <AnnouncementBanner />
 
       <main>
