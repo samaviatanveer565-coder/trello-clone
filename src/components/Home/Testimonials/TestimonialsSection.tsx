@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 import TestimonialSlide, {
     type Testimonial,
 } from "./TestimonialSlide";
 
 import TrustedBrands from "./TrustedBrands";
+
+// GSAP plugins register karna
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const testimonials: Testimonial[] = [
     {
@@ -45,29 +51,163 @@ const testimonials: Testimonial[] = [
 export default function TestimonialsSection() {
     const [activeIndex, setActiveIndex] = useState(0);
 
+    // Puri section ka reference: GSAP is section ko pin karega
+    const sectionRef = useRef<HTMLElement>(null);
+
+    // Visible cards area ka reference
+    const viewportRef = useRef<HTMLDivElement>(null);
+
+    // Horizontal cards container ka reference
+    const trackRef = useRef<HTMLDivElement>(null);
+
+    // GSAP ScrollTrigger ko arrows/dots ke saath connect karna
+    const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+
+    // Specific testimonial card tak horizontally scroll karna
+    function goToSlide(index: number) {
+        const normalizedIndex =
+            (index + testimonials.length) % testimonials.length;
+
+        const trigger = scrollTriggerRef.current;
+
+        // Desktop: GSAP scroll position se card change karna
+        if (trigger) {
+            const progress =
+                normalizedIndex / (testimonials.length - 1);
+
+            const targetScroll =
+                trigger.start +
+                progress * (trigger.end - trigger.start);
+
+            window.scrollTo({
+                top: targetScroll,
+                behavior: "smooth",
+            });
+
+            setActiveIndex(normalizedIndex);
+            return;
+        }
+
+        // Mobile / reduced motion: normal horizontal scrolling
+        const viewport = viewportRef.current;
+        const track = trackRef.current;
+
+        if (!viewport || !track) return;
+
+        const targetCard = track.children[
+            normalizedIndex
+        ] as HTMLElement | undefined;
+
+        if (!targetCard) return;
+
+        viewport.scrollTo({
+            left: targetCard.offsetLeft - track.offsetLeft,
+            behavior: "smooth",
+        });
+
+        setActiveIndex(normalizedIndex);
+    }
+
     function nextSlide() {
-        setActiveIndex((current) =>
-            (current + 1) % testimonials.length
-        );
+        goToSlide(activeIndex + 1);
     }
 
     function previousSlide() {
-        setActiveIndex((current) =>
-            (current - 1 + testimonials.length) %
-            testimonials.length
-        );
+        goToSlide(activeIndex - 1);
     }
 
-    const activeTestimonial = testimonials[activeIndex];
+    // GSAP: vertical scroll ko horizontal movement se connect karna
+    useGSAP(
+        () => {
+            const section = sectionRef.current;
+            const viewport = viewportRef.current;
+            const track = trackRef.current;
+
+            if (!section || !viewport || !track) return;
+
+            // Total cards width minus visible area
+            const getDistance = () =>
+                Math.max(0, track.scrollWidth - viewport.clientWidth);
+
+            // Different screen sizes ke liye responsive GSAP setup
+            const mm = gsap.matchMedia();
+
+            mm.add(
+                "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+                () => {
+                    const distance = getDistance();
+
+                    if (distance <= 0) return;
+
+                    // Track ko right se left animate karna
+                    const animation = gsap.to(track, {
+                        x: () => -getDistance(),
+                        ease: "none",
+
+                        scrollTrigger: {
+                            trigger: section,
+
+                            // Testimonials section top par aate hi animation start
+                            start: "top top",
+
+                            // Horizontal distance ke equal vertical scrolling space
+                            end: () => `+=${getDistance()}`,
+
+                            // Section ko screen par temporarily rokna
+                            pin: true,
+
+                            // Vertical scroll aur horizontal movement synchronize
+                            scrub: 1,
+
+                            // Screen resize par dimensions recalculate
+                            invalidateOnRefresh: true,
+
+                            // Pinning ko smooth banana
+                            anticipatePin: 1,
+
+                            // Scroll ke according pagination dot update
+                            onUpdate: (self) => {
+                                const index = Math.round(
+                                    self.progress * (testimonials.length - 1)
+                                );
+
+                                setActiveIndex((current) =>
+                                    current === index ? current : index
+                                );
+                            },
+                        },
+                    });
+
+                    // ScrollTrigger reference save karna
+                    scrollTriggerRef.current =
+                        animation.scrollTrigger ?? null;
+
+                    return () => {
+                        scrollTriggerRef.current = null;
+                    };
+                }
+            );
+
+            // Component unmount hone par GSAP cleanup
+            return () => {
+                scrollTriggerRef.current = null;
+                mm.revert();
+            };
+        },
+        { scope: sectionRef }
+    );
 
     return (
         <section
+            ref={sectionRef}
             id="testimonials"
-            className="w-full  bg-[var(--section-bg)] px-4 pt-[40px] pb-[75px]"
-        >
-            <div className="trello-container ">
 
-                {/* Navigation aur testimonial card ka common wrapper */}
+            className="w-full bg-[var(--section-bg)] px-4 pt-[40px] pb-[75px]"
+
+        >
+            <div className="trello-container">
+
+                {/* Navigation aur testimonial cards ka common wrapper */}
                 <div className="w-full max-w-[1100px]">
 
                     {/* Carousel navigation */}
@@ -83,21 +223,21 @@ export default function TestimonialsSection() {
                                 <button
                                     key={testimonial.id}
                                     type="button"
-                                    onClick={() => setActiveIndex(index)}
+                                    onClick={() => goToSlide(index)}
                                     aria-label={`Show testimonial ${index + 1}`}
                                     aria-current={
                                         activeIndex === index ? "true" : undefined
                                     }
                                     className={`
-                  h-[8px] w-[8px] rounded-full
-                  focus-visible:outline-2
-                  focus-visible:outline-offset-4
-                  focus-visible:outline-[#0065FF]
-                  ${activeIndex === index
+                    h-[8px] w-[8px] rounded-full
+                    focus-visible:outline-2
+                    focus-visible:outline-offset-4
+                    focus-visible:outline-[var(--trello-blue)]
+                    ${activeIndex === index
                                             ? "bg-[var(--testimonial-dot-active)]"
                                             : "bg-[var(--testimonial-dot-inactive)] hover:bg-[var(--testimonial-dot-hover)]"
                                         }
-                `}
+                    `}
                                 />
                             ))}
                         </div>
@@ -108,13 +248,16 @@ export default function TestimonialsSection() {
                             onClick={previousSlide}
                             aria-label="Previous testimonial"
                             className="
-              flex h-[30px] w-[30px]
-              items-center justify-center
-              rounded-full bg-[var(--testimonial-arrow-bg)]
-              text-[var(--testimonial-arrow-text)] hover:bg-[var(--testimonial-arrow-hover)]
-              focus-visible:outline-2
-              focus-visible:outline-trello-blue
-            "
+                flex h-[30px] w-[30px]
+                items-center justify-center
+                rounded-full
+                bg-[var(--testimonial-arrow-bg)]
+                text-[var(--testimonial-arrow-text)]
+                hover:bg-[var(--testimonial-arrow-hover)]
+                focus-visible:outline-2
+                focus-visible:outline-[var(--trello-blue)]
+              "
+
                         >
                             <svg
                                 width="18"
@@ -137,13 +280,15 @@ export default function TestimonialsSection() {
                             onClick={nextSlide}
                             aria-label="Next testimonial"
                             className="
-              flex h-[30px] w-[30px]
-              items-center justify-center
-              rounded-full bg-[#F1F2F4]
-              text-[#626F86] hover:bg-[#DFE1E6]
-              focus-visible:outline-2
-              focus-visible:outline-[#0065FF]
-            "
+                flex h-[30px] w-[30px]
+                items-center justify-center
+                rounded-full
+                bg-[var(--testimonial-arrow-bg)]
+                text-[var(--testimonial-arrow-text)]
+                hover:bg-[var(--testimonial-arrow-hover)]
+                focus-visible:outline-2
+                focus-visible:outline-[var(--trello-blue)]
+              "
                         >
                             <svg
                                 width="18"
@@ -161,11 +306,64 @@ export default function TestimonialsSection() {
                         </button>
                     </div>
 
-                    {/* Only selected testimonial changes */}
-                    <div aria-live="polite" aria-atomic="true">
-                        <TestimonialSlide
-                            testimonial={activeTestimonial}
-                        />
+                    {/* Horizontal viewport: sirf visible cards show hongay */}
+                    <div
+                        ref={viewportRef}
+                        className="
+              w-full
+              overflow-x-auto
+              snap-x snap-mandatory
+              md:overflow-hidden md:snap-none
+              motion-reduce:overflow-x-auto
+              motion-reduce:snap-x
+            "
+                        onScroll={(event) => {
+                            // Desktop par pagination GSAP handle karega
+                            if (scrollTriggerRef.current) return;
+
+                            const viewport = event.currentTarget;
+                            const track = trackRef.current;
+
+                            if (!track) return;
+
+                            const firstCard = track.firstElementChild as
+                                HTMLElement | null;
+
+                            if (!firstCard) return;
+
+                            const cardStep = firstCard.offsetWidth + 24;
+
+                            const index = Math.round(
+                                viewport.scrollLeft / cardStep
+                            );
+
+                            setActiveIndex(
+                                Math.max(
+                                    0,
+                                    Math.min(index, testimonials.length - 1)
+                                )
+                            );
+                        }}
+                    >
+                        {/* Horizontal track: all testimonial cards render together */}
+                        <div
+                            ref={trackRef}
+                            className="relative flex w-max gap-6"
+                        >
+                            {testimonials.map((testimonial) => (
+                                <div
+                                    key={testimonial.id}
+                                    className="
+                    w-[calc(100vw-64px)]
+                    max-w-[1100px]
+                    shrink-0
+                    snap-start
+                  "
+                                >
+                                    <TestimonialSlide testimonial={testimonial} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
@@ -173,6 +371,6 @@ export default function TestimonialsSection() {
                 <TrustedBrands />
 
             </div>
-        </section>
+        </section >
     );
 }

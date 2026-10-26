@@ -28,6 +28,7 @@ function App() {
 
   // ===== VIRTUALIZATION FUNCTIONALITY =====
 
+  // Virtualized sections k start ka reference
   const mainRef = useRef<HTMLElement>(null);
   const [mainOffset, setMainOffset] = useState(0);
 
@@ -37,6 +38,7 @@ function App() {
 
       const rect = mainRef.current.getBoundingClientRect();
 
+      // Page k start say virtualized section ka offset calculate karna
       setMainOffset(rect.top + window.scrollY);
     };
 
@@ -49,8 +51,10 @@ function App() {
     };
   }, []);
 
+  // Sirf first 4 sections virtualize karna
+  // Testimonials ko GSAP pinning k liay normal flow main rakha hai
   const virtualizer = useWindowVirtualizer({
-    count: 7,
+    count: 4,
     estimateSize: () => 800,
     overscan: 1,
     scrollMargin: mainOffset,
@@ -71,14 +75,6 @@ function App() {
     <RevealOnScroll repeat exitUp>
       <WorkSmarterSection />
     </RevealOnScroll>,
-
-    <RevealOnScroll repeat exitUp>
-      <TestimonialsSection />
-    </RevealOnScroll>,
-
-    <SignupCTA />,
-
-    <Footer />,
   ];
 
   return (
@@ -86,31 +82,47 @@ function App() {
       <Header />
       <AnnouncementBanner />
 
-      <main ref={mainRef}>
-        <div
-          className="relative w-full"
-          style={{
-            height: `${virtualizer.getTotalSize()}px`,
-            // Offscreen sections unmount honay k bawajood
-            // scrolling k liay space preserve hoti hai.
-          }}
-        >
-          {virtualizer.getVirtualItems().map((virtualItem) => (
-            <div
-              key={virtualItem.key}
-              data-index={virtualItem.index}
-              ref={virtualizer.measureElement}
-              className="absolute top-0 left-0 w-full"
-              
-              style={{
-                transform: `translateY(${virtualItem.start - virtualizer.options.scrollMargin
-                  }px)`,
-              }}
-            >
-              {sections[virtualItem.index]}
-            </div>
-          ))}
-        </div>
+      <main>
+        {/* ===== TANSTACK VIRTUALIZED SECTIONS ===== */}
+
+        <section ref={mainRef}>
+          <div
+            className="relative w-full"
+            style={{
+              height: `${virtualizer.getTotalSize()}px`,
+
+              // Offscreen sections unmount honay k bawajood
+              // scrolling k liay space preserve hoti hai.
+            }}
+          >
+            {virtualizer.getVirtualItems().map((virtualItem) => (
+              <div
+                key={virtualItem.key}
+                data-index={virtualItem.index}
+                ref={virtualizer.measureElement}
+                className="absolute top-0 left-0 w-full"
+                style={{
+                  transform: `translateY(${virtualItem.start -
+                    virtualizer.options.scrollMargin
+                    }px)`,
+                }}
+              >
+                {sections[virtualItem.index]}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ===== GSAP HORIZONTAL SCROLL TESTIMONIALS ===== */}
+
+        {/* Normal document flow main render karna
+            taake GSAP ScrollTrigger pinning correctly work kare */}
+        <TestimonialsSection />
+
+        {/* ===== REMAINING NORMAL SECTIONS ===== */}
+
+        <SignupCTA />
+        <Footer />
       </main>
     </>
   );
